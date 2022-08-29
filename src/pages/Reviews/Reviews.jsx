@@ -15,8 +15,7 @@ const Reviews = () => {
 
     searchMovie();
   }, [movieId]);
-  console.log(reviews.results);
-  console.log(reviews);
+
   return (
     <div>
       {reviews.length > 0 ? (

@@ -11,6 +11,7 @@ const Home = () => {
     loading: false,
     error: null,
   });
+
   useEffect(() => {
     const fetchMovies = async () => {
       setState({
@@ -36,7 +37,7 @@ const Home = () => {
       }
     };
     fetchMovies();
-  }, [state]);
+  }, [state.page]);
   const trendMovile = state.movies.map(({ id, title, poster_path }) => (
     <NavItem key={id} state={{ from: location }} to={`movies/${id}`}>
       {title}

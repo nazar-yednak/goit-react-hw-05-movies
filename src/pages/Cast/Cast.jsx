@@ -18,7 +18,6 @@ const Cast = () => {
 
     searchMovie();
   }, [movieId]);
-  console.log(cast);
 
   return (
     <ul>
