@@ -7,7 +7,6 @@ import SearchForm from '../../components/SearchForm/SearchForm';
 const Movies = () => {
   const location = useLocation();
 
-  //   const onChange = e => setSearchParams({ search: e.target.value });
   const [state, setState] = useState({
     movies: [],
     page: 1,
@@ -54,5 +53,6 @@ const Movies = () => {
     </div>
   );
 };
+// zzxczxc
 
 export default Movies;
