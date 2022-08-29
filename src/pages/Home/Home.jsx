@@ -5,40 +5,20 @@ import { NavItem, Wrapper, Image } from './Home.styled';
 
 const Home = () => {
   const location = useLocation();
-  const [state, setState] = useState({
-    movies: [],
-    page: 1,
-    loading: false,
-    error: null,
-  });
-
+  const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    const fetchMovies = async () => {
-      setState({
-        ...state,
-        loading: true,
-      });
+    const fetchMovies = () => {
       try {
-        const result = await getMovies(state.page).then(res => res.results);
-        setState(prevState => {
-          return {
-            ...prevState,
-            movies: [...result],
-          };
-        });
+        getMovies(page).then(res => setMovies(res.results));
       } catch (error) {
-      } finally {
-        setState(prevState => {
-          return {
-            ...prevState,
-            loading: false,
-          };
-        });
+        console.log(error);
       }
     };
+
     fetchMovies();
-  }, [state.page]);
-  const trendMovile = state.movies.map(({ id, title, poster_path }) => (
+  }, [page]);
+  const trendMovile = movies.map(({ id, title, poster_path }) => (
     <NavItem key={id} state={{ from: location }} to={`movies/${id}`}>
       {title}
       <Image
