@@ -17,27 +17,25 @@ const Movies = () => {
   useEffect(() => {
     const searchMovie = () => {
       try {
-        searchMovies({ search }).then(setMovies);
+        searchMovies({ search }).then(res => setMovies(res.results));
       } catch (error) {}
     };
 
     searchMovie();
   }, [search]);
-
+  console.log(movies);
   return (
     <div>
       <SearchForm onSubmit={changeSearch} />
       {search &&
         movies.map(({ id, title, poster_path }) => (
-          <li>
-            <NavLink key={{ id }} state={{ from: location }} to={`${id}`}>
-              {title}
-              <img
-                src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
-                alt={title}
-              />
-            </NavLink>
-          </li>
+          <NavLink key={id} state={{ from: location }} to={`${id}`}>
+            {title}
+            <img
+              src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
+              alt={title}
+            />
+          </NavLink>
         ))}
     </div>
   );

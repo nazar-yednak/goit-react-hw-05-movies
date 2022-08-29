@@ -16,7 +16,7 @@ export const searchMovies = async ({ search }) => {
     `${SEARCH_URL}?api_key=${KEY}&query=${search}`
   );
 
-  return response.data.results;
+  return response.data;
 };
 
 export const getIdMovie = async movieId => {
