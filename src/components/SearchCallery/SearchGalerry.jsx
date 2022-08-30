@@ -11,13 +11,12 @@ const SearchCallery = ({ movies }) => {
         movies.map(({ id, title, poster_path }) => (
           <Link key={id} state={{ from: location }} to={`${id}`}>
             {title}
-            {/* {poster_path && (
-              <img
-                height="100%"
-                src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
-                alt={title}
-              />
-            )} */}
+
+            <img
+              height="100%"
+              src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
+              alt={title}
+            />
           </Link>
         ))}
     </div>
