@@ -7,7 +7,7 @@ import MoviesGalerry from '../../components/MoviesGalerry/MoviesGalerry';
 const Home = () => {
   // const location = useLocation();
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
+  const page = 1;
   useEffect(() => {
     const fetchMovies = () => {
       try {
