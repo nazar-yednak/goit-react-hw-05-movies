@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import { getMovies } from '../../API/API';
-import { NavItem, Wrapper, Image } from './Home.styled';
+import { Wrapper } from './Home.styled';
+import MoviesGalerry from '../../components/MoviesGalerry/MoviesGalerry';
 
 const Home = () => {
-  const location = useLocation();
+  // const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   useEffect(() => {
@@ -18,21 +19,15 @@ const Home = () => {
 
     fetchMovies();
   }, [page]);
-  const trendMovile = movies.map(({ id, title, poster_path }) => (
-    <NavItem key={id} state={{ from: location }} to={`movies/${id}`}>
-      {title}
-      <Image
-        src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
-        alt={title}
-      />
-    </NavItem>
-  ));
 
   return (
     <>
       <h2>Trending today</h2>
+
       <Wrapper>
-        <Wrapper>{trendMovile}</Wrapper>
+        <Wrapper>
+          {movies.length > 0 && <MoviesGalerry movies={movies} />}
+        </Wrapper>
       </Wrapper>
     </>
   );

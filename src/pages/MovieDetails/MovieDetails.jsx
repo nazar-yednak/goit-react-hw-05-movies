@@ -7,18 +7,20 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { getIdMovie } from '../../API/API';
-const MovieDetalis = () => {
-  const [movie, setMovie] = useState(null);
+const MovieDetails = () => {
+  const [movie, setMovie] = useState([]);
   const { movieId } = useParams();
   const location = useLocation();
   const { from } = location.state;
   const navigate = useNavigate();
   const goBack = () => navigate(location.state.from);
   useEffect(() => {
+    if (!movieId) {
+      return;
+    }
     const fetchMovies = async () => {
       try {
         const result = await getIdMovie(movieId);
-
         setMovie(result);
       } catch (error) {
         console.log(error);
@@ -26,7 +28,7 @@ const MovieDetalis = () => {
     };
     fetchMovies();
   }, [movieId]);
-
+  console.log(movie.genres);
   return (
     <>
       {movie && (
@@ -40,7 +42,7 @@ const MovieDetalis = () => {
             alt={movie.title}
           />
           <p>{movie.overview}</p>
-          <p> {movie.genres.map(({ name }) => name).join(' ')}</p>
+          <p> {movie?.genres?.map(({ name }) => name).join(' ')}</p>
           <hr></hr>
 
           <NavLink state={{ from }} to={`cast`}>
@@ -56,4 +58,4 @@ const MovieDetalis = () => {
     </>
   );
 };
-export default MovieDetalis;
+export default MovieDetails;
