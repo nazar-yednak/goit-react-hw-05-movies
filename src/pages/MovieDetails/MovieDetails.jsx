@@ -37,10 +37,14 @@ const MovieDetails = () => {
             back
           </button>
           <h2>{movie.title}</h2>
-          <img
-            src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
-            alt={movie.title}
-          />
+          {movie.poster_path !== undefined ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
+              alt={movie.title}
+            />
+          ) : (
+            ' '
+          )}
           <p>{movie.overview}</p>
           <p> {movie?.genres?.map(({ name }) => name).join(' ')}</p>
           <hr></hr>
