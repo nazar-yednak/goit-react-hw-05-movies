@@ -5,9 +5,9 @@ import { Wrapper } from './Home.styled';
 import MoviesGalerry from '../../components/MoviesGalerry/MoviesGalerry';
 
 const Home = () => {
-  // const location = useLocation();
   const [movies, setMovies] = useState([]);
   const page = 1;
+
   useEffect(() => {
     const fetchMovies = () => {
       try {
@@ -23,7 +23,6 @@ const Home = () => {
   return (
     <>
       <h2>Trending today</h2>
-
       <Wrapper>
         <Wrapper>
           {movies.length > 0 && <MoviesGalerry movies={movies} />}

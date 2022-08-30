@@ -7,18 +7,17 @@ const SearchCallery = ({ movies }) => {
   console.log(movies.poster_path);
   return (
     <div>
-      {movies.length > 0 &&
-        movies.map(({ id, title, poster_path }) => (
-          <Link key={id} state={{ from: location }} to={`${id}`}>
-            {title}
-            {poster_path.length > 0 && (
-              <img
-                src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
-                alt={title}
-              />
-            )}
-          </Link>
-        ))}
+      {movies.map(({ id, title, poster_path }) => (
+        <Link key={id} state={{ from: location }} to={`${id}`}>
+          {title}
+          {poster_path.length > 0 && (
+            <img
+              src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
+              alt={title}
+            />
+          )}
+        </Link>
+      ))}
     </div>
   );
 };
