@@ -4,20 +4,22 @@ import { Link, useLocation } from 'react-router-dom';
 
 const SearchCallery = ({ movies }) => {
   const location = useLocation();
-  console.log(movies.poster_path);
+
   return (
     <div>
-      {movies.map(({ id, title, poster_path }) => (
-        <Link key={id} state={{ from: location }} to={`${id}`}>
-          {title}
-          {poster_path.length > 0 && (
-            <img
-              src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
-              alt={title}
-            />
-          )}
-        </Link>
-      ))}
+      {movies.length > 0 &&
+        movies.map(({ id, title, poster_path }) => (
+          <Link key={id} state={{ from: location }} to={`${id}`}>
+            {title}
+            {poster_path && (
+              <img
+                height="100%"
+                src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
+                alt={title}
+              />
+            )}
+          </Link>
+        ))}
     </div>
   );
 };

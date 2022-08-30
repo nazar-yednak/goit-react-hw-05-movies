@@ -24,7 +24,7 @@ const Movies = () => {
 
     searchMovie();
   }, [search]);
-  console.log(movies);
+
   return (
     <div>
       <SearchForm onSubmit={changeSearch} />
@@ -32,6 +32,5 @@ const Movies = () => {
     </div>
   );
 };
-// zzxczxc
 
 export default Movies;

@@ -28,7 +28,7 @@ const MovieDetails = () => {
     };
     fetchMovies();
   }, [movieId]);
-  console.log(movie.genres);
+
   return (
     <>
       {movie && (
