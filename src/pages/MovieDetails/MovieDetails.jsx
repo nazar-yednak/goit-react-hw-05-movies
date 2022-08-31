@@ -60,7 +60,7 @@ const MovieDetails = () => {
               <Title>
                 {movie.title} ({movie?.release_date?.slice(0, 4)})
               </Title>
-              <p>User score: {movie.vote_average * 10}%</p>
+              <p>User score: {(movie.vote_average * 10).toFixed(0)}%</p>
               <TitleOver>Overview</TitleOver>
               <p>{movie.overview}</p>
               <GenresText>
