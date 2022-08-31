@@ -7,6 +7,14 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { getIdMovie } from '../../API/API';
+import {
+  ButtonBack,
+  Container,
+  ContainerDetails,
+  Title,
+  GenresText,
+  TitleOver,
+} from './MovieDetails.styled';
 const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
   const { movieId } = useParams();
@@ -21,6 +29,7 @@ const MovieDetails = () => {
     const fetchMovies = async () => {
       try {
         const result = await getIdMovie(movieId);
+        console.log(result);
         setMovie(result);
       } catch (error) {
         console.log(error);
@@ -33,22 +42,34 @@ const MovieDetails = () => {
     <>
       {movie && (
         <div>
-          <button type="button" onClick={goBack}>
-            back
-          </button>
-          <h2>{movie.title}</h2>
-          {movie.poster_path !== undefined ? (
-            <img
-              src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
-              alt={movie.title}
-            />
-          ) : (
-            ' '
-          )}
-          <p>{movie.overview}</p>
-          <p> {movie?.genres?.map(({ name }) => name).join(' ')}</p>
+          <ButtonBack type="button" onClick={goBack}>
+            Go back
+          </ButtonBack>
+          <Container>
+            <div>
+              {movie.poster_path !== undefined ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              ) : (
+                ' '
+              )}
+            </div>
+            <ContainerDetails>
+              <Title>
+                {movie.title} ({movie?.release_date?.slice(0, 4)})
+              </Title>
+              <p>User score: {movie.vote_average * 10}%</p>
+              <TitleOver>Overview</TitleOver>
+              <p>{movie.overview}</p>
+              <GenresText>
+                {movie?.genres?.map(({ name }) => name).join(' ')}
+              </GenresText>
+            </ContainerDetails>
+          </Container>
           <hr></hr>
-
+          <p>Additional information</p>
           <NavLink state={{ from }} to={`cast`}>
             Cast
           </NavLink>

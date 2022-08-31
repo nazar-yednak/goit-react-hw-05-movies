@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
-export const NavItem = styled(NavLink)`
-  display: inline-block;
-  height: 50%;
+export const Title = styled.h2`
+  display: flex;
+  justify-content: center;
 `;
 
 export const Wrapper = styled.div`

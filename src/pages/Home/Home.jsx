@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 // import { useLocation } from 'react-router-dom';
 import { getMovies } from '../../API/API';
-import { Wrapper } from './Home.styled';
+import { Wrapper, Title } from './Home.styled';
 import MoviesGalerry from '../../components/MoviesGalerry/MoviesGalerry';
 
 const Home = () => {
@@ -22,11 +22,9 @@ const Home = () => {
 
   return (
     <>
-      <h2>Trending today</h2>
+      <Title>Trending today</Title>
       <Wrapper>
-        <Wrapper>
-          {movies.length > 0 && <MoviesGalerry movies={movies} />}
-        </Wrapper>
+        {movies.length > 0 && <MoviesGalerry movies={movies} />}
       </Wrapper>
     </>
   );

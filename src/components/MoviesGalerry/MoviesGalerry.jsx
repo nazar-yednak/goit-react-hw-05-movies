@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { GalleryContainer, LinkMovie, Image } from './MoviesGalerry.styled';
 
 const MoviesGalerry = ({ movies }) => {
   const location = useLocation();
   return (
-    <div>
+    <GalleryContainer>
       {movies.map(({ id, title, poster_path }) => (
-        <Link key={id} state={{ from: location }} to={`movies/${id}`}>
-          {title}
-          <img
+        <LinkMovie key={id} state={{ from: location }} to={`movies/${id}`}>
+          <Image
             src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
             alt={title}
           />
-        </Link>
+          {title}
+        </LinkMovie>
       ))}
-    </div>
+    </GalleryContainer>
   );
 };
 

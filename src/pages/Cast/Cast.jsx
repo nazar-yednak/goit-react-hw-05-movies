@@ -24,19 +24,21 @@ const Cast = () => {
       {cast &&
         cast.map(({ cast_id, name, character, profile_path }) => {
           return (
-            <li key={cast_id}>
-              {profile_path !== null ? (
-                <img
-                  src={`${imageURL}w342${profile_path}`}
-                  alt={name}
-                  loading="lazy"
-                />
-              ) : (
-                <img height="300" alt={name} loading="lazy" />
-              )}
-              <p>{name}</p>
-              <p>{character}</p>
-            </li>
+            <div>
+              <li key={cast_id}>
+                {profile_path !== null ? (
+                  <img
+                    src={`${imageURL}w342${profile_path}`}
+                    alt={name}
+                    loading="lazy"
+                  />
+                ) : (
+                  <img height="300" alt={name} loading="lazy" />
+                )}
+                <p>{name}</p>
+                <p>{character}</p>
+              </li>
+            </div>
           );
         })}
     </ul>
