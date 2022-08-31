@@ -29,7 +29,7 @@ const MovieDetails = () => {
     const fetchMovies = async () => {
       try {
         const result = await getIdMovie(movieId);
-        console.log(result);
+
         setMovie(result);
       } catch (error) {
         console.log(error);
